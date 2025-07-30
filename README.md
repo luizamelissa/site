@@ -6,12 +6,6 @@
 
 *Conecte fornecedores e lojistas de forma simples e eficiente*
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-
-[🌐 Demo](https://dropspace-demo.vercel.app) • [📖 Docs](https://docs.dropspace.com) • [🐛 Issues](https://github.com/usuario/dropspace/issues)
-
 </div>
 
 ---
@@ -26,24 +20,6 @@
 📊 **Relatórios Avançados** - Analytics e insights automáticos  
 ⚙️ **Configurações Pro** - PIX, cartão, 2FA e muito mais  
 
-## 🚀 Início Rápido
-
-\`\`\`bash
-# Clone o projeto
-git clone https://github.com/usuario/dropspace.git
-
-# Entre na pasta
-cd dropspace
-
-# Instale as dependências
-npm install
-
-# Execute o projeto
-npm run dev
-\`\`\`
-
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador 🎉
-
 ## 🛠️ Tecnologias
 
 - **[Next.js 14](https://nextjs.org)** - Framework React com App Router
@@ -51,20 +27,6 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador 🎉
 - **[Tailwind CSS](https://tailwindcss.com)** - Estilização moderna
 - **[Shadcn/UI](https://ui.shadcn.com)** - Componentes elegantes
 - **[Lucide React](https://lucide.dev)** - Ícones lindos
-
-## 📁 Estrutura
-
-\`\`\`
-dropspace/
-├── 📱 app/                 # Páginas (App Router)
-│   ├── 🏠 dashboard/      # Painel principal
-│   ├── 📦 products/       # Gestão de produtos
-│   ├── 🛒 orders/         # Pedidos
-│   └── ⚙️ settings/       # Configurações
-├── 🧩 components/         # Componentes reutilizáveis
-├── 🔐 contexts/           # Estados globais
-└── 🛠️ lib/               # Utilitários
-\`\`\`
 
 ## 🎯 Como Usar
 
@@ -83,44 +45,47 @@ Acompanhe vendas em tempo real
 ### 5️⃣ **Analise Resultados**
 Use relatórios para otimizar vendas
 
-## 📜 Scripts
-
-\`\`\`bash
-npm run dev      # 🚀 Desenvolvimento
-npm run build    # 📦 Build de produção
-npm run start    # ▶️ Executar produção
-npm run lint     # 🔍 Verificar código
-\`\`\`
-
-## 🤝 Contribuir
-
-Contribuições são bem-vindas! 
-
-1. Fork o projeto
-2. Crie sua branch (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Add MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
 ## 🗺️ Roadmap
 
 - [ ] 📱 **App Mobile** (React Native)
 - [ ] 🤖 **IA para Recomendações**
-- [ ] 💬 **Chat em Tempo Real**
 - [ ] 🌍 **Multi-idiomas**
 - [ ] 🎨 **Tema Escuro**
 - [ ] 📈 **Analytics Avançado**
 
 ## 📄 Licença
 
-Este projeto está sob a licença **MIT**. Veja [LICENSE](LICENSE) para mais detalhes.
+Este projeto está sob a licença **MIT**. Veja [LICENSE](LI# DropSpace - Plataforma de Dropshipping
 
----
+Uma plataforma completa para conectar fornecedores e lojistas, permitindo criar lojas virtuais em minutos com ferramentas low-code.
 
-<div align="center">
+## 🚀 Funcionalidades
 
-**Feito com ❤️ para revolucionar o dropshipping**
+- **Autenticação completa** - Login, cadastro e gerenciamento de usuários
+- **Dashboard intuitivo** - Painel de controle com métricas e ações rápidas
+- **Construtor de sites** - Editor visual drag-and-drop para criar lojas
+- **Marketplace de fornecedores** - Conecte-se com fornecedores verificados
+- **Gerenciamento de produtos** - Catálogo completo de produtos
+- **Sistema de pedidos** - Acompanhe vendas e entregas
+- **Central de ajuda** - Documentação e suporte
+- **Contato integrado** - Formulários e canais de comunicação
 
-⭐ **Gostou? Deixe uma estrela!** ⭐
+## 🛠️ Tecnologias
+
+- **Next.js 14** - Framework React com App Router
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização utilitária
+- **Shadcn/UI** - Componentes de interface
+- **Lucide React** - Ícones modernos
+- **Context API** - Gerenciamento de estado
+
+## 🎯 Como usar
+
+1. **Cadastre-se** na plataforma
+2. **Faça login** para acessar o dashboard
+3. **Explore fornecedores** na seção dedicada
+4. **Crie seu site** usando o construtor visual
+5. **Gerencie produtos** e pedidos pelo dashboard
+CENSE) para mais detalhes.
 
 </div>
