@@ -11,17 +11,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Box, Eye, EyeOff, Loader2 } from "lucide-react"
+import { Box, Eye, EyeOff, Loader2, CheckCircle2, Mail } from "lucide-react"
 import { useAuth } from "@/contexts/auth-context"
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmation, setShowConfirmation] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     phone: "",
-    userType: "",
+    userType: "" as "seller" | "supplier" | "",
     acceptTerms: false,
   })
   const [error, setError] = useState("")
@@ -37,14 +38,86 @@ export default function RegisterPage() {
       return
     }
 
+    if (!formData.userType) {
+      setError("Selecione o tipo de usuário")
+      return
+    }
+
+    if (formData.password.length < 6) {
+      setError("A senha deve ter pelo menos 6 caracteres")
+      return
+    }
+
     try {
-      const success = await register(formData)
-      if (success) {
-        router.push("/dashboard")
+      const result = await register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        userType: formData.userType as "seller" | "supplier",
+      })
+
+      if (result.success) {
+        if (result.needsConfirmation) {
+          setShowConfirmation(true)
+        } else {
+          router.push("/dashboard")
+        }
+      } else {
+        setError(result.error || "Erro ao criar conta. Tente novamente.")
       }
     } catch (err) {
       setError("Erro ao criar conta. Tente novamente.")
     }
+  }
+
+  // Tela de confirmação de email
+  if (showConfirmation) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            <Link href="/" className="inline-flex items-center space-x-2">
+              <div className="relative">
+                <Box className="h-10 w-10 text-blue-600 transform rotate-12" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-bounce"></div>
+              </div>
+              <span className="text-3xl font-bold text-gray-900">DropSpace</span>
+            </Link>
+          </div>
+
+          <Card className="border-2 shadow-xl">
+            <CardHeader className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                <CheckCircle2 className="h-8 w-8 text-green-600" />
+              </div>
+              <CardTitle className="text-2xl font-bold text-gray-900">Conta criada com sucesso!</CardTitle>
+              <CardDescription className="text-base">
+                Enviamos um email de confirmação para <strong>{formData.email}</strong>
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center gap-3 rounded-lg bg-blue-50 p-4">
+                <Mail className="h-6 w-6 text-blue-600 flex-shrink-0" />
+                <p className="text-sm text-blue-800">
+                  Verifique sua caixa de entrada e clique no link de confirmação para ativar sua conta.
+                </p>
+              </div>
+              
+              <div className="text-center text-sm text-gray-600">
+                <p>Não recebeu o email? Verifique sua pasta de spam.</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/login">Ir para o Login</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -111,7 +184,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="userType">Tipo de usuário</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, userType: value })}>
+                <Select onValueChange={(value) => setFormData({ ...formData, userType: value as "seller" | "supplier" })}>
                   <SelectTrigger className="h-12">
                     <SelectValue placeholder="Selecione uma opção" />
                   </SelectTrigger>
@@ -128,10 +201,11 @@ export default function RegisterPage() {
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Crie uma senha forte"
+                    placeholder="Crie uma senha forte (min. 6 caracteres)"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
+                    minLength={6}
                     className="h-12 pr-12"
                   />
                   <Button
